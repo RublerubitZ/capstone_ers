@@ -1,0 +1,46 @@
+.App-header {
+    text-align: center;
+    background-color: #fff5e5;
+    position: relative; /* 낙엽을 배치하기 위한 기준 설정 */
+    overflow: hidden; /* 화면 밖으로 낙엽이 넘어가지 않도록 설정 */
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  .leaf {
+    position: absolute;
+    width: 70px; /* 기본 낙엽 크기 증가 */
+    height: auto; /* 비율 유지 */
+    opacity: 0.7; /* 약간 투명하게 설정 */
+    animation: float 5s infinite ease-in-out; /* 부드러운 움직임 애니메이션 */
+    z-index: 1; /* 텍스트 아래에 배치 */
+  }
+  
+  /* 랜덤 크기 설정 */
+  .leaf.large {
+    width: 100px; /* 큰 낙엽 크기 */
+  }
+  
+  .leaf.small {
+    width: 50px; /* 작은 낙엽 크기 */
+  }
+  
+  /* 낙엽 움직임 애니메이션 */
+  @keyframes float {
+    0% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(15deg);
+    }
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+  }
+  
+/* 미디어 쿼리 추가 */
+@media (max-width: 768px) {
+  .App-header {
+    padding: 10px;
+  }
+}

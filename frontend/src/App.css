@@ -1,0 +1,247 @@
+/* 전체 설정 */
+.App {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'NanumSquare', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff5e5;
+  /* overflow: hidden; */ /* 스크롤 제거는 모바일에서 내용이 잘리는 원인이 될 수 있으므로 제거합니다. */
+}
+
+.black-nav {
+  background: #5d4037;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 10px 20px;
+  font-weight: 600;
+  box-sizing: border-box;
+}
+
+.App-header {
+  background-color: #fff5e5;
+  width: 100%;
+  min-height: calc(100vh - 60px); /* 상단 네비게이션 높이를 제외한 영역 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5%;
+  color: #5d4037;
+  box-sizing: border-box;
+}
+
+.App-header h1 {
+  font-size: 3rem; /* 제목 글씨 크기 */
+  margin: 20px 0;
+  font-weight: bold;
+  font-family: 'Nanum Myeongjo', serif;
+}
+
+.App-header p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+/* 감정 입력 영역 */
+.emotion-input {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap; /* 화면 크기에 따라 줄바꿈 */
+}
+
+.emotion-input input {
+  width: 300px;
+  max-width: 80%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #5d4037;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.emotion-input button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 2px solid #5d4037;
+  border-radius: 0 5px 5px 0;
+  background: #5d4037;
+  color: white;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.emotion-input button:hover {
+  background: #3e2723;
+}
+
+/* 감정 태그 영역 */
+.emotion-tags {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap; /* 버튼들이 화면 크기에 따라 줄바꿈되도록 */
+  justify-content: center;
+}
+
+.emotion-tags button {
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background: #5d4037;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'NanumSquare', sans-serif;
+}
+
+.emotion-tags button:hover {
+  background: #3e2723;
+}
+
+/* 미디어 쿼리 적용 */
+@media (max-width: 768px) {
+  .App-header h1 {
+    font-size: 2rem; /* 작은 화면에서 제목 크기 감소 */
+  }
+
+  .emotion-input {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .emotion-input input,
+  .emotion-input button {
+    width: 80%;
+    max-width: 300px;
+    margin: 5px 0;
+    border-radius: 5px;
+  }
+
+  .emotion-tags button {
+    width: 45%;
+    margin: 5px 2.5%;
+  }
+}
+
+/* 네비게이션 아이템 스타일 */
+.nav-item {
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  text-decoration: underline;
+}
+
+/* 사이드바 스타일 */
+.sidebar {
+  position: fixed;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #fff5e5;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar.left {
+  left: 0;
+  transform: translateX(-100%); /* 숨겨진 상태 */
+}
+
+.sidebar.right {
+  right: 0;
+  transform: translateX(100%); /* 숨겨진 상태 */
+}
+
+.sidebar.show {
+  transform: translateX(0); /* 나타날 때 */
+}
+
+.sidebar-content {
+  padding: 20px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  float: right;
+  cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999; /* 사이드바보다 낮은 z-index */
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 80%;
+  }
+}
+
+/* 개발자 리스트 스타일 */
+.developer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.developer-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.developer-icon {
+  font-size: 2rem;
+  color: #5d4037;
+  min-width: 40px;
+}
+
+.developer-info p {
+  margin: 2px 0;
+}
+
+.developer-info strong {
+  font-size: 1.2rem;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+  .developer-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .developer-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+}
