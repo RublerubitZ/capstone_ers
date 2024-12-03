@@ -1,0 +1,6 @@
+# 가상 환경 폴더
+.venv/
+venv/
+
+# Python 캐시 파일
+__pycache__/
