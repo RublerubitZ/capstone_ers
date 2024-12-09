@@ -8,9 +8,8 @@ Emotion Restaurant Recommend System(ERS)는
 
 감정 텍스트 인식을 기반으로, CBF와 NCF로 각 감정에 맞는 위치 기반 맛집을 추천하는 서비스입니다.
 
-이 프로젝트는 20년도때 학교에 코로나로 학교에 오지 못해 슬펐던 기억과,
-
-그로인해 주변의 맛집을 모르는 경우 있어 이경우에 어디에 가야되지? 하는 생각으로 프로젝트를 진행하게 되었습니다.
+현대인은 수많은 외식 선택지 앞에서 시간과 에너지를 소비하며, 감정 상태에 따라 만족할 수 있는 음식을 선택하기 어려운 상황에 놓여 있다. 본 프로젝트는 사용자의 감정을 분석하고, 이를 바탕으로 감정에 맞는 음식을 추천함으로써 음식 선택 과정을 효율화하고자 한다. 또한, 사용자에게 감정에 맞는 음식점 정보를 제공하여 시간 절약과 심리적 만족도를 높이고자 한다.
+이 프로젝트는 2020년 코로나19로 인해 학교에 오지 못했던 시기의 경험에서 시작되었다. 당시 주변 맛집에 대한 정보를 알지 못해 어디로 가야 할지 고민했던 경험을 바탕으로, 감정과 연계된 맛집 추천 시스템을 개발하게 되었다.
 
 ## 주요 기능
 - 텍스트로 감정 인식을 하여 해당 감정에 맞는 음식과 해당 음식 카테고리에 맞는 맛집을 실시간 위치 기반으로 맛집 추천
@@ -25,14 +24,93 @@ Emotion Restaurant Recommend System(ERS)는
 - 해당 음식에 관한 맛집을 자신의 위치를 기반으로 추천합니다.
 - 사용자 인터페이스(UI/UX)
 
+## 프로젝트 파일 구조
+```
+📦backend
+ ┣ 📂model
+ ┃ ┣ 📜food_emotion.xlsx
+ ┃ ┣ 📜model_statedict.pkl
+ ┃ ┣ 📜ncf_model_with_data.pkl
+ ┃ ┗ 📜recommendation_system.pkl
+ ┃ ┣ 📂__pycache__
+ ┃ ┃ ┗ 📜ncf_recommend.cpython-37.pyc
+ ┃ ┣ 📜api_request.py
+ ┃ ┣ 📜ncf_recommend.py
+ ┣ 📂__pycache__
+ ┃ ┣ 📜cbf.cpython-37.pyc
+ ┃ ┣ 📜inference_nsmc.cpython-312.pyc
+ ┃ ┣ 📜main.cpython-312.pyc
+ ┃ ┣ 📜main.cpython-37.pyc
+ ┃ ┣ 📜model.cpython-312.pyc
+ ┃ ┣ 📜model.cpython-37.pyc
+ ┃ ┗ 📜ncf_recommend.cpython-37.pyc
+ ┣ 📜.gitattributes
+ ┣ 📜.gitignore
+ ┣ 📜cbf.py
+ ┣ 📜index.html
+ ┣ 📜main.py
+ ┣ 📜model.py
+ ┣ 📜requirements.txt
+ ┣ 📜test.py
+ ┗ 📜train_data.csv
+📦frontend
+ ┣ 📂public
+ ┃ ┣ 📜angry.png
+ ┃ ┣ 📜chicken.png
+ ┃ ┣ 📜cool.png
+ ┃ ┣ 📜favicon.ico
+ ┃ ┣ 📜gg.png
+ ┃ ┣ 📜happy.png
+ ┃ ┣ 📜index.html
+ ┃ ┣ 📜laugh.png
+ ┃ ┣ 📜leave.png
+ ┃ ┣ 📜logo192.png
+ ┃ ┣ 📜logo512.png
+ ┃ ┣ 📜manifest.json
+ ┃ ┣ 📜robots.txt
+ ┃ ┣ 📜sad.png
+ ┃ ┣ 📜scare.png
+ ┃ ┣ 📜sick.png
+ ┃ ┣ 📜smiling.png
+ ┃ ┣ 📜suprised.png
+ ┃ ┣ 📜title.svg
+ ┃ ┣ 📜wink.png
+ ┃ ┣ 📜되돌아가기.png
+ ┃ ┗ 📜새로고침.png
+ ┣ 📂src
+ ┃ ┣ 📂components
+ ┃ ┃ ┣ 📜Home.css
+ ┃ ┃ ┣ 📜Home.js
+ ┃ ┃ ┣ 📜LastPage.css
+ ┃ ┃ ┣ 📜LastPage.js
+ ┃ ┃ ┣ 📜NextPage.css
+ ┃ ┃ ┗ 📜NextPage.js
+ ┃ ┣ 📜App.css
+ ┃ ┣ 📜App.js
+ ┃ ┣ 📜App.test.js
+ ┃ ┣ 📜index.css
+ ┃ ┣ 📜index.js
+ ┃ ┣ 📜logo.svg
+ ┃ ┣ 📜reportWebVitals.js
+ ┃ ┗ 📜setupTests.js
+ ┣ 📜.gitignore
+ ┣ 📜package-lock.json
+ ┣ 📜package.json
+ ┗ 📜README.md
+ ```
+
+## 프로젝트 구조도
+
+![image](https://github.com/user-attachments/assets/e6d0d913-508b-4e9a-87dc-a5e008b03434)
+
 ## 프로젝트 구조
 - 프론트엔드
-  - 웹 서비스 : React 사용 
-  - 모바일 어플리케이션 : React 사용 (고민중)
+  - 웹 서비스 : React
+  - 모바일 어플리케이션 : React 형식으로 PC/모바일 환경 동적으로 고려하여 구축 -> ReactNative 사용 및 연동 계획
 
 - 백엔드
-  - 서버 프레임워크 : Flask 혹은 FastAPI 사용
-  - 통신 방식 : 미정
+  - 서버 프레임워크 : FastAPI
+  - 통신 방식 : RESTAPI
 
 - 머신러닝
     - 사용 모델 : KoBERT(NLP)
@@ -40,7 +118,7 @@ Emotion Restaurant Recommend System(ERS)는
   기능 : 감정 분석 , 감정에 따른 음식 추천, 음식에 따른 맛집 추천
 
 - Etc
-  - 사용 API : kakao Map
+  - 사용 API : KaKaoMAP API With Web
   - 클라우드 인프라 : Colab, AWS(혹은 GCP, OCI)
 
 ## 깃허브 기여 방법
@@ -64,13 +142,13 @@ Emotion Restaurant Recommend System(ERS)는
 
 ## 팀 구성
 - 이름 : 김영우
-  - 역할 : 캡스톤디자인 팀장, 백엔드 개발
+  - 역할 : 캡스톤디자인 팀장, 프론트 엔드
   
 - 이름: 구승율
-  - 역할: 백엔드 개발, 서버 구축, 
+  - 역할: 백엔드 개발, 서버 구축,  API활용 및 개발, API연동, 데이터셋 크롤링 및 전처리
 
 - 이름: 이인호
-  - 역할: 프론트 개발, API 활용 개발
+  - 역할: 백엔드 개발, API 활용 및 개발
 
 공통 : 머신러닝 모델 개발 및 , 데이터 수집 및 분석
 
